@@ -1,0 +1,408 @@
+
+C:\code\jeremy.sellars\node\simple-index>node_modules\.bin\coffee.cmd test.coffee 
+[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m✗[39m 
+
+  An index when first document is added [1msynchronously[22m when second document is added [1masynchronously[22m
+    ✗ [33mgetItem [1msynchronously[22m yields the item[39m
+      » [33mexpected [1m{
+    topics: [
+        1,
+        {
+            result: 0,
+            index: {
+                getItem: [Function],
+                count: [Function],
+                getItemSync: [Function],
+                add: [Function],
+                addSync: [Function]
+            }
+        },
+        {
+            getItem: [Function],
+            count: [Function],
+            getItemSync: [Function],
+            add: [Function],
+            addSync: [Function]
+        }
+    ],
+    _callback: true,
+    env: {
+        context: ..,
+        suite: {
+            subject: 'Simple Index: Index',
+            options: { error: true },
+            batches: [
+                {
+                    remaining: 0,
+                    _remaining: 6,
+                    lastContext: 'An index when first document is added [1msynchronously[22m when second document is added [1masynchronously[22m',
+                    promise: {
+                        _events: { end: [Function] },
+                        _vowsEmitedEventsOrder: [ 'newListener' ],
+                        _vowsEmitedEvents: {
+                            newListener: [
+                                [ 'end', [Function] ]
+                            ]
+                        }
+                    },
+                    total: 6,
+                    errored: 0,
+                    teardowns: [],
+                    status: 'begin',
+                    pending: 0,
+                    suite: ...,
+                    broken: 0,
+                    honored: 5,
+                    tests: {
+                        An index: {
+                            when first initialized: { is empty: [Function] },
+                            when first document is added [1msynchronously[22m: {
+                                When getItem [1masynchronously[22m: { topic: [Function], Item is the result: [Function] },
+                                when second document is added [1masynchronously[22m: {
+                                    documentNumber is 1: [Function],
+                                    getItem [1msynchronously[22m yields the item: [Function],
+                                    topic: [Function]
+                                },
+                                returns 0: [Function],
+                                getItem [1msynchronously[22m yields the item: [Function],
+                                topic: [Function]
+                            },
+                            topic: {
+                                getItem: [Function],
+                                count: [Function],
+                                getItemSync: [Function],
+                                add: [Function],
+                                addSync: [Function]
+                            }
+                        }
+                    },
+                    vows: [
+                        { status: 'honored' },
+                        { status: 'honored' },
+                        { status: 'honored' },
+                        { status: 'honored' },
+                        { status: 'honored' },
+                        {}
+                    ]
+                }
+            ],
+            results: {
+                time: null,
+                total: 0,
+                errored: 0,
+                pending: 0,
+                broken: 0,
+                honored: 0
+            },
+            matcher: /.[1m/,
+            reporter: {
+                print: [Function],
+                reset: [Function],
+                name: 'dot-matrix',
+                setStream: [Function],
+                report: [Function]
+            }
+        },
+        callback: [Function]
+    },
+    emitter: {
+        _events: {
+            error: [ [Function], [Function] ],
+            success: [ [Function], [Function], [Function] ]
+        },
+        _maxListeners: Infinity,
+        _vowsEmitedEventsOrder: [
+            'newListener',
+            'newListener',
+            'newListener',
+            'newListener',
+            'newListener',
+            'success'
+        ],
+        _vowsEmitedEvents: {
+            newListener: [
+                [ 'success', [Function] ],
+                [ 'success', [Function] ],
+                [ 'error', [Function] ],
+                [ 'success', [Function] ],
+                [ 'error', [Function] ]
+            ],
+            success: [
+                [ 1 ]
+            ]
+        },
+        ctx: {
+            clearInterval: [Function],
+            TypeError: [Function],
+            decodeURI: [Function],
+            Buffer: [Function],
+            parseFloat: [Function],
+            Number: [Function],
+            URIError: [Function],
+            encodeURIComponent: [Function],
+            RangeError: [Function],
+            ReferenceError: [Function],
+            RegExp: [Function],
+            Array: [Function],
+            isNaN: [Function],
+            setTimeout: [Function],
+            console: {
+                trace: [Function],
+                assert: [Function],
+                log: [Function],
+                error: [Function],
+                time: [Function],
+                info: [Function],
+                timeEnd: [Function],
+                warn: [Function],
+                dir: [Function]
+            },
+            Date: [Function],
+            Infinity: Infinity,
+            Uint32Array: [Function],
+            Boolean: [Function],
+            Float32Array: [Function],
+            Error: [Function],
+            root: .,
+            NaN: NaN,
+            Uint8Array: [Function],
+            DataView: [Function],
+            Int32Array: [Function],
+            String: [Function],
+            Function: [Function],
+            Math: { LN10: 2.302585092994046, PI: 3.141592653589793, E: 2.718281828459045, LOG10E: 0.4342944819032518, SQRT2: 1.4142135623730951, LOG2E: 1.4426950408889634, SQRT1_2: 0.7071067811865476, LN2: 0.6931471805599453, cos: [Function], pow: [Function], log: [Function], tan: [Function], sqrt: [Function], ceil: [Function], asin: [Function], abs: [Function], max: [Function], exp: [Function], atan2: [Function], random: [Function], round: [Function], floor: [Function], acos: [Function], atan: [Function], min: [Function], sin: [Function] },
+            undefined: undefined,
+            encodeURI: [Function],
+            Int16Array: [Function],
+            escape: [Function],
+            unescape: [Function],
+            process: {
+                mainModule: {
+                    filename: 'C:\\code\\jeremy.sellars\\node\\simple-index\\test.coffee',
+                    children: [],
+                    id: '.',
+                    exited: false,
+                    loaded: true,
+                    parent: null,
+                    paths: [
+                        'C:\\code\\jeremy.sellars\\node\\simple-index\\node_modules',
+                        'C:\\code\\jeremy.sellars\\node\\node_modules',
+                        'C:\\code\\jeremy.sellars\\node_modules',
+                        'C:\\code\\node_modules',
+                        'C:\\node_modules'
+                    ],
+                    exports: {}
+                },
+                stderr: {
+                    _isStdio: true,
+                    bytesWritten: 0,
+                    _flags: 0,
+                    destroyed: false,
+                    _pendingWriteReqs: 0,
+                    fd: 2,
+                    destroySoon: [Function],
+                    destroy: [Function],
+                    writable: true,
+                    end: [Function],
+                    _connectQueueSize: 0,
+                    bytesRead: 0,
+                    allowHalfOpen: undefined,
+                    _type: 'tty',
+                    _handle: {
+                        writeQueueSize: 0,
+                        onread: [Function],
+                        socket: ..
+                    },
+                    readable: false
+                },
+                arch: 'ia32',
+                binding: [Function],
+                createChildProcess: [Function],
+                on: [Function],
+                uvCounters: [Function],
+                cwd: [Function],
+                _cwdForDrive: [Function],
+                mixin: [Function],
+                stdout: {
+                    _isStdio: true,
+                    fd: 1,
+                    destroySoon: [Function],
+                    destroy: [Function],
+                    writable: true,
+                    end: [Function],
+                    _type: 'fs',
+                    readable: false
+                },
+                moduleLoadList: [
+                    'Binding evals',
+                    'Binding natives',
+                    'NativeModule events',
+                    'NativeModule buffer',
+                    'Binding buffer',
+                    'NativeModule assert',
+                    'NativeModule util',
+                    'NativeModule path',
+                    'NativeModule module',
+                    'NativeModule fs',
+                    'Binding fs',
+                    'Binding constants',
+                    'NativeModule stream',
+                    'NativeModule vm',
+                    'NativeModule child_process',
+                    'NativeModule net',
+                    'NativeModule timers',
+                    'Binding timer_wrap',
+                    'NativeModule _linklist',
+                    'Binding process_wrap',
+                    'Binding tty_wrap',
+                    'NativeModule console',
+                    'NativeModule tty'
+                ],
+                _tickCallback: [Function],
+                unwatchFile: [Function],
+                title: 'runtests.cmd  ',
+                error: [Function],
+                platform: 'win32',
+                env: {
+                    ALLUSERSPROFILE: 'C:\\ProgramData',
+                    APPDATA: 'C:\\Users\\jeremy.sellars\\AppData\\Roaming',
+                    asl.log: 'Destination=file',
+                    CommonProgramFiles: 'C:\\Program Files (x86)\\Common Files',
+                    CommonProgramFiles(x86): 'C:\\Program Files (x86)\\Common Files',
+                    CommonProgramW6432: 'C:\\Program Files\\Common Files',
+                    COMPUTERNAME: 'ILLUM-JEREMYN',
+                    ComSpec: 'C:\\Windows\\system32\\cmd.exe',
+                    FP_NO_HOST_CHECK: 'NO',
+                    HOMEDRIVE: 'U:',
+                    HOMEPATH: '\\',
+                    HOMESHARE: '\\\\bell\\users\\jeremy.sellars',
+                    LOCALAPPDATA: 'C:\\Users\\jeremy.sellars\\AppData\\Local',
+                    LOGONSERVER: '\\\\SSI-DC-CHERRY',
+                    MOZ_PLUGIN_PATH: 'C:\\Program Files (x86)\\Foxit Software\\Foxit Reader\\plugins\\',
+                    NUMBER_OF_PROCESSORS: '2',
+                    OS: 'Windows_NT',
+                    Path: 'C:\\Program Files\\Common Files\\Microsoft Shared\\Windows Live;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Windows Live;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;c:\\Program Files (x86)\\Microsoft ASP.NET\\ASP.NET Web Pages\\v1.0\\;C:\\Program Files (x86)\\Microsoft SQL Server\\100\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\100\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\100\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\100\\Tools\\Binn\\VSShell\\Common7\\IDE\\;C:\\Program Files (x86)\\Microsoft SQL Server\\100\\DTS\\Binn\\;C:\\Program Files (x86)\\Android\\android-sdk\\platform-tools;C:\\Program Files (x86)\\Android\\android-sdk\\tools;C:\\Program Files (x86)\\nodejs\\;C:\\Program Files\\SourceGear\\Common\\DiffMerge\\;C:\\Program Files (x86)\\Windows Live\\Shared',
+                    PATHEXT: '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC',
+                    PROCESSOR_ARCHITECTURE: 'x86',
+                    PROCESSOR_ARCHITEW6432: 'AMD64',
+                    PROCESSOR_IDENTIFIER: 'Intel64 Family 6 Model 23 Stepping 6, GenuineIntel',
+                    PROCESSOR_LEVEL: '6',
+                    PROCESSOR_REVISION: '1706',
+                    ProgramData: 'C:\\ProgramData',
+                    ProgramFiles: 'C:\\Program Files (x86)',
+                    ProgramFiles(x86): 'C:\\Program Files (x86)',
+                    ProgramW6432: 'C:\\Program Files',
+                    PROMPT: '$P$G',
+                    PSModulePath: 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\',
+                    PUBLIC: 'C:\\Users\\Public',
+                    SESSIONNAME: 'Console',
+                    SystemDrive: 'C:',
+                    SystemRoot: 'C:\\Windows',
+                    TEMP: 'C:\\Users\\JEREMY~1.SEL\\AppData\\Local\\Temp',
+                    TMP: 'C:\\Users\\JEREMY~1.SEL\\AppData\\Local\\Temp',
+                    USERDNSDOMAIN: 'SOFTEK.LOCAL',
+                    USERDOMAIN: 'SSI',
+                    USERNAME: 'jeremy.sellars',
+                    USERPROFILE: 'C:\\Users\\jeremy.sellars',
+                    VS100COMNTOOLS: 'c:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\Tools\\',
+                    windir: 'C:\\Windows',
+                    WIX: 'C:\\Program Files (x86)\\Windows Installer XML v3.5\\'
+                },
+                version: 'v0.6.3',
+                chdir: [Function],
+                reallyExit: [Function],
+                assert: [Function],
+                execPath: 'C:\\code\\jeremy.sellars\\node\\simple-index\\node_modules\\coffee-script\\bin\\coffee',
+                exit: [Function],
+                kill: [Function],
+                pid: 7248,
+                debug: [Function],
+                uptime: [Function],
+                argv: [ 'coffee', 'C:\\code\\jeremy.sellars\\node\\simple-index\\test.coffee' ],
+                memoryUsage: [Function],
+                stdin: {
+                    _events: {
+                        keypress: [],
+                        newListener: [Function]
+                    },
+                    bytesWritten: 0,
+                    _flags: 0,
+                    destroyed: false,
+                    _pendingWriteReqs: 0,
+                    fd: 0,
+                    _vowsEmitedEventsOrder: [ 'newListener' ],
+                    _vowsEmitedEvents: {
+                        newListener: [
+                            [ 'newListener', [Function] ]
+                        ]
+                    },
+                    writable: false,
+                    _connectQueueSize: 0,
+                    bytesRead: 0,
+                    allowHalfOpen: undefined,
+                    _handle: {
+                        writeQueueSize: 0,
+                        onread: [Function],
+                        socket: ..
+                    }
+                },
+                removeListener: [Function],
+                openStdin: [Function],
+                _needTickCallback: [Function],
+                nextTick: [Function],
+                versions: {
+                    ares: '1.7.5-DEV',
+                    openssl: '0.9.8r',
+                    node: '0.6.3',
+                    uv: '0.6',
+                    v8: '3.6.6.8'
+                },
+                _debugProcess: [Function],
+                _events: { exit: [Function] },
+                features: {
+                    tls: true,
+                    debug: false,
+                    ipv6: true,
+                    tls_sni: true,
+                    uv: true,
+                    tls_npn: true
+                },
+                watchFile: [Function],
+                _kill: [Function],
+                EventEmitter: [Function],
+                dlopen: [Function],
+                addListener: [Function],
+                inherits: [Function],
+                _byteLength: [Function],
+                umask: [Function]
+            },
+            decodeURIComponent: [Function],
+            EvalError: [Function],
+            clearTimeout: [Function],
+            GLOBAL: .,
+            Int8Array: [Function],
+            setInterval: [Function],
+            Float64Array: [Function],
+            SyntaxError: [Function],
+            Object: [Function],
+            eval: [Function],
+            global: .,
+            Uint16Array: [Function],
+            parseInt: [Function],
+            ArrayBuffer: [Function],
+            JSON: { stringify: [Function], parse: [Function] },
+            isFinite: [Function]
+        }
+    },
+    name: 'when second document is added [22masynchronously[1m',
+    event: 'success',
+    tests: {
+        documentNumber is 1: [Function],
+        getItem [22msynchronously[1m yields the item: [Function],
+        topic: [Function]
+    },
+    title: 'An index when first document is added [22msynchronously[1m when second document is added [22masynchronously*',
+    isEvent: false
+}[22m to be empty[39m[90m // test.coffee:55[39m
+✗ [33m[1mBroken[22m[39m » [1m5[22m honored ∙ [1m1[22m broken[90m (0.018s)[39m
+Terminate batch job (Y/N)? Terminate batch job (Y/N)? 
