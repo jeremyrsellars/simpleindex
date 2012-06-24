@@ -1,5 +1,5 @@
-vows = require 'vows'
 assert = require 'assert'
+require 'should'
 
 BitArray = require 'bit-array'
 
@@ -79,7 +79,7 @@ describe 'Simple Index: Index', ->
       @terms = (new Index).getTermsSync()
       done()
     it 'result is array', ->
-      assert.isArray @terms
+      Array.isArray(@terms).should.be.true
     it 'there are no terms', ->
       assert.deepEqual @terms, []
 
@@ -88,7 +88,7 @@ describe 'Simple Index: Index', ->
       @terms = (new Index).getTermsSync()
       done()
     it 'result is array' , ->
-      assert.isArray @terms
+      Array.isArray(@terms).should.be.true
     it 'there are no terms' , ->
       assert.deepEqual @terms, []
 

@@ -1,4 +1,5 @@
 assert = require 'assert'
+require 'should'
 
 documentInverter = require './DocumentInverter.coffee'
 DocumentInverter = documentInverter.DocumentInverter
@@ -11,9 +12,9 @@ describe 'Given *new DocumentInverter*', ->
     @inverter = new DocumentInverter
     done()
 
-  it 'When first initialized': 
+  it 'When first initialized', ->
     it 'is a DocumentInverter', ->
-      assert.instanceOf @inverter, DocumentInverter
+      (@inverter instanceof DocumentInverter).should.be.true
     
   describe 'When tokenizing an *empty string - synchronously*', ->
     it 'yields *empty array*', ->
