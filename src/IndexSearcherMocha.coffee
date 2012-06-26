@@ -6,7 +6,7 @@ IndexSearcher = indexSearcher.IndexSearcher
 
 BitArray = require 'bit-array'
 
-index = require './Index.js'
+index = require './Index.coffee'
 Index = index.Index
 
 EmptyIndex = new Index

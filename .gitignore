@@ -1,4 +1,4 @@
 npm-*.log
-
+*.tmp
 /node_modules
 /backup

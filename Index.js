@@ -31,7 +31,6 @@ Index.prototype.getItemSync = function(documentNumber) {
     console.log ("null document at index: " + documentNumber);
     return null;
   }
-
   return x.document;
 };
 
@@ -47,7 +46,6 @@ Index.prototype.insertTerm = function (term, documentNumber) {
   var i;
   var termDoc;
   var termObj = _createTerm(term);
-
   for (i = 0; 
     i < this.termDocs.length && _compareTerms(termObj, this.termDocs[i].term) > 0;
     i++)
