@@ -5,7 +5,7 @@ class DedupFilter
 
   filter: (allTerms) ->
     allTerms = this.subFilter.filter(allTerms) if this.subFilter?
-    @terms = []
+    terms = []
     @insertTermSync terms, term for term in allTerms
     return terms
 
