@@ -3,6 +3,43 @@ simpleindex
 
 A simple inverted index for javascript.
 
+## Building Documents
+
+### DocumentBuilder
+
+The DocumentBuilder builds a dictionary object of field to value pairs, where the value is a string that is ready to be inverted.
+
+#### DocumentBuilder Example
+```coffeescript
+# Objects to put in index
+apples = [
+    {
+        variety: "Golden Delicious"
+        identified: 1914
+        color: "Yellow"
+        description: "The Golden Delicious is a cultivar of apple with a yellow color..."
+    },
+    {
+        variety: "Red Delicious"
+        identified: 1880
+        color: "Red"
+        description: "The Red Delicious is a clone of apple cultigen..."
+    }
+]
+
+# This converter defines the fields and where to get them from the object.
+converter =
+  name:  (d) -> d.variety
+  body:  (d) -> d.description
+  year:  (d) -> d.identified.toString()
+  color: (d) -> d.color
+
+# Builds a document object - a simple dictionary of field=value (where value is the string to be inverted).
+db = new DocumentBuilder converter
+documents = [db.build a for a in {apples}]
+
+```
+
 ## Using Filters
 
 Filters transform a term stream to prepare it for indexing.   Filters have a `.filter` method, which accepts and returns an array or array-like object.
