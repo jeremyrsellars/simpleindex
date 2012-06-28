@@ -1,23 +1,23 @@
+# yields unique terms
 
-DedupFilter = (subFilter) ->
-  this.subFilter = subFilter
-  return
+class DedupFilter
+  constructor: (@subFilter) ->
 
-DedupFilter.prototype.filter = (allTerms) ->
-  allTerms = this.subFilter.filter(allTerms) if this.subFilter?
-  terms = []
-  this.insertTermSync terms, term for term in allTerms
-  return terms
+  filter: (allTerms) ->
+    allTerms = this.subFilter.filter(allTerms) if this.subFilter?
+    @terms = []
+    @insertTermSync terms, term for term in allTerms
+    return terms
 
-DedupFilter.prototype.insertTermSync = (terms, term) ->
-  i = 0
-  `
-    for (; i < terms.length && term > terms[i]; i++)
-      ;
-  `
-  return if i < terms.length && (term == terms[i])
-  terms.splice i, 0, term
-  return
+  insertTermSync: (terms, term) ->
+    i = 0
+    `
+      for (; i < terms.length && term > terms[i]; i++)
+        ;
+    `
+    return if i < terms.length && (term == terms[i])
+    terms.splice i, 0, term
+    return
 
 module.exports =
   DedupFilter: DedupFilter
