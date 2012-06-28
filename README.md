@@ -32,7 +32,7 @@ new StopWordFilter(stopwordsArray)
 new StopWordFilter(stopwordsArray, subfilter)
 ```
  
-### Chaining
+#### Filter Chaining
 
 Most filters can be chained together so that the output of one is the input of the next, thus working inside-out.
 
