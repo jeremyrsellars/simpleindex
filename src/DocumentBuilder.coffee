@@ -4,9 +4,9 @@ class DocumentBuilder
     return
 
   build: (o) ->
-    doc = new Object
+    doc = {}
     doc[field] = fieldGetter(o) for own field, fieldGetter of @converter
-    return doc
+    doc
 
 module.exports =
   DocumentBuilder: DocumentBuilder
