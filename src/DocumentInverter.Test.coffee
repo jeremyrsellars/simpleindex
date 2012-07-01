@@ -67,52 +67,22 @@ describe 'Given *new DocumentInverter*', ->
       assert.deepEqual terms, ['with','spaces','commas','and','semicolons','succeeds']
     
   describe 'Given *new DocumentInverter*', -> 
-    describe 'When inverting an *empty string - synchronously*', ->
+    describe 'When inverting {fname:""}- synchronously*', ->
       it 'yields *empty array*', ->
-        terms = @inverter.invertSync ''
+        terms = @inverter.invertSync {fname:""}
         assert.deepEqual terms, []
       
-    describe 'When inverting *" " - synchronously*', ->
-      it 'yields *empty array*', ->
-        terms = @inverter.invertSync " "
-        assert.deepEqual terms, []
+    describe 'When inverting {fname:"apple"}- synchronously*', ->
+      it 'yields *["fname:apple"]*', ->
+        terms = @inverter.invertSync {fname:"apple"}
+        assert.deepEqual terms, ["fname:apple"]
       
-    describe 'When inverting *"a" - synchronously*', ->
-      it "yields *['a']*", ->
-        terms = @inverter.invertSync "a"
-        assert.deepEqual terms, ['a']
+    describe 'When inverting {fname:"john", lname:"go"}- synchronously*', ->
+      it 'yields *["fname:john", "lname:go"]*', ->
+        terms = @inverter.invertSync {fname:"john", lname:"go"}
+        assert.deepEqual terms, ["fname:john", "lname:go"]
       
-    describe 'When inverting *"b" - synchronously*', ->
-      it "yields *['b']*", ->
-        terms = @inverter.invertSync "b"
-        assert.deepEqual terms, ['b']
-      
-    describe 'When inverting *" a" - synchronously*', ->
-      it "yields *['a']", ->
-        terms = @inverter.invertSync ' a'
-        assert.deepEqual terms, ['a']
-      
-    describe 'When inverting *"  " - synchronously*', ->
-      it 'yields *empty array*', ->
-        terms = @inverter.invertSync '  '
-        assert.deepEqual terms, []
-      
-    describe "When inverting *'a,.-_!@#$%^&*(),./;\"\'' - synchronously*'", ->
-      it "yields *['a']*'", ->
-        terms = @inverter.invertSync 'a,.-_!@#$%^&*(),./;\"\''
-        assert.deepEqual terms, ['a']
-      
-    describe "When inverting *'a,a' - synchronously*'", ->
-      it "yields *['a']*'", ->
-        terms = @inverter.invertSync 'a,a'
-        assert.deepEqual terms, ['a']
-      
-    describe "When inverting *'a,b' - synchronously*'", ->
-      it "yields *['a','b']*'", ->
-        terms = @inverter.invertSync 'a,b'
-        assert.deepEqual terms, ['a','b']
-      
-    describe "When inverting *'with spaces, commas, and semicolons; succeeds' - synchronously*'", ->
-      it "yields *words sorted alphabetically*'", ->
-        terms = @inverter.invertSync 'with spaces, commas, and semicolons; succeeds'
-        assert.deepEqual terms, ['and','commas','semicolons','spaces','succeeds','with']
+    describe 'When inverting {fname:["john", "johnny be good"], lname:"go"}- synchronously*', ->
+      it 'yields *["fname:john", "fname:johnny be good", "lname:go"]*', ->
+        terms = @inverter.invertSync {fname:["john", "johnny be good"], lname:"go"}
+        assert.deepEqual terms, ["fname:john", "fname:johnny be good", "lname:go"]
