@@ -10,8 +10,8 @@ isString = (s) ->
   typeof s == 'string' || s instanceof String
 
 class DocumentInverter
-  constructor: (filter) ->
-    @filter = filter ? new DedupFilter new LowerCaseFilter()
+  constructor: (optionalFilter) ->
+    @filter = optionalFilter ? new DedupFilter new LowerCaseFilter()
 
   invertSync: (d) =>
     if isString d
