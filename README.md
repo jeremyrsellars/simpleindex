@@ -1,9 +1,25 @@
 simpleindex
 ===========
 
-A simple inverted index for javascript.
+A simple inverted index for javascript.  An Index is used to store and retrieve objects by one or more of the terms in the object.
+
+## Indexing arbitrarilly formatted objects in 3 steps
+
+Use these steps to index an object, an xml document, a web page, or whatever else you can put in an array.
+
+1. [Build a document](#Building-Documents) with [DocumentBuilder](#DocumentBuilder)
+2. [Invert the document](#DocumentInverter-Example) - Build a term vector with [DocumentInverter](#DocumentInverter)
+3. [Index the object](#Indexing-an-Object) - Add the object with its term vector to the [Index](#Index).
 
 ## Building Documents
+
+For our purposes, a document is an object where the key is the field name and the value is a string ready for tokenization and filtering, or a pre-tokenized term vector, like this:
+
+```coffeescript
+document = {name:"Red delicious", color:["Red"]}
+```
+
+Documents can be built with the DocumentBuilder and inverted (turned into a token vector) with DocumentInverter
 
 ### DocumentBuilder
 
@@ -32,19 +48,49 @@ converter =
   name:  (d) -> d.variety
   body:  (d) -> d.description
   year:  (d) -> d.identified.toString()
-  color: (d) -> d.color
+  color: (d) -> [d.color] # a vector is treated as pre-tokenized terms
 
 # Builds a document object - a simple dictionary of field=value (where value is the string to be inverted).
 db = new DocumentBuilder converter
 documents = [db.build a for a in {apples}]
-
 ```
 
-## Using Filters
+### DocumentInverter
+
+The DocumentInverter takes a document object or string and converts it to a term vector.  By default, DocumentInverter will use [Filters](#Using-Filters) to normalize terms into lower case and remove duplicate terms.
+
+#### DocumentInverter Example
+
+```coffeescript
+docInv = new DocumentInverter new DedupFilter new LowerCaseFilter()
+apple = variety: "Red Delicious", identified: 1880, color: "Red"
+terms = docInv.invertSync db.build apple
+# terms = ["name:red", "name:delicious", "year:1880", "color:Red"]
+```
+
+## Indexing-an-Object
+
+Now that your object has been described with a term vector, it is ready to be added to the index.
+
+### Index
+
+An Index is used to store and retrieve objects by one or more of the terms representing the object.
+
+### Indexing Example
+
+```coffeescript
+index = new Index()
+apple = variety: "Red Delicious", identified: 1880, color: "Red"
+index.addSync apple, ["name:red", "name:delicious", "year:1880", "color:Red"]
+```
+
+## Advanced
+
+### Using Filters
 
 Filters transform a term stream to prepare it for indexing.   Filters have a `.filter` method, which accepts and returns an array or array-like object.
 
-### Standard Filters
+#### Standard Filters
 
 These filters ought to get you started.
 
