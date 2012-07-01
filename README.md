@@ -69,6 +69,17 @@ new StopWordFilter(stopwordsArray)
 new StopWordFilter(stopwordsArray, subfilter)
 ```
  
+**PrefixFilter** - Yields terms prepended with a string
+
+```coffeescript
+new PrefixFilter(prefix)
+new PrefixFilter(prefix, subfilter)
+
+# Example:
+new PrefixFilter("tag:").filter(['salad', 'breakfast'])
+# yields ['tag:salad', 'tag:breakfast']
+```
+ 
 #### Filter Chaining
 
 Most filters can be chained together so that the output of one is the input of the next, thus working inside-out.
