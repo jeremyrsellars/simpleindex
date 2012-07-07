@@ -152,3 +152,21 @@ new DedupFilter(new LowerCaseFilter()).filter(["APPLE","apple", "Orange"])
 # yields ["apple", "orange"]
 ```
 
+## Searching
+
+### Searching an index with an IndexSearcher and a Query
+
+An IndexSearcher lets you query an index.  A query finds all the matches in an index 
+and returns a BitArray representing the matching doctors.
+
+```coffeescript
+breakfastButNotSaladQuery = new Query (index) ->
+  hits = new BitArray()
+  hits.or index.getIndexesForTermSync 'tag:salad'
+  hits.not()
+  hits.and index.getIndexesForTermSync 'tag:breakfast'
+  return hits
+
+searcher = new IndexSearcher(@index)
+hits = searcher.search breakfastButNotSaladQuery
+```
