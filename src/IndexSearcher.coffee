@@ -1,14 +1,11 @@
 BitArray = require 'bit-array'
 
-class IndexSearcher
+class module.exports.IndexSearcher
   constructor: (index) ->
     @index = index
 
   searchAllIndexesSync: (query) ->
-    b = new BitArray
-    if @index.count()
-      b.set n, query.IsMatchAtIndex(n, @) for n in [0..@index.count() - 1]
-    return b
+    query.search @index
 
   searchAllIndexes: (query, callback) ->
     process.nextTick () =>
@@ -16,6 +13,3 @@ class IndexSearcher
       callback null, x
       return
     return
-
-module.exports =
-  IndexSearcher : IndexSearcher

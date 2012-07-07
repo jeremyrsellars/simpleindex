@@ -1,13 +1,10 @@
-vows = require 'vows'
 assert = require 'assert'
 
-indexSearcher = require './IndexSearcher.coffee'
-IndexSearcher = indexSearcher.IndexSearcher
+IndexSearcher = require('./IndexSearcher.coffee').IndexSearcher
 
 BitArray = require 'bit-array'
 
-index = require './Index.coffee'
-Index = index.Index
+Index = require('./Index.coffee').Index
 
 EmptyIndex = new Index
 EmptyBitArray = new BitArray
@@ -21,38 +18,44 @@ AlternatingBitArray.set n, 1 for n in [1..7] by 2
 First4OnBitArray = new BitArray
 First4OnBitArray.set n, 1 for n in [0..3]
 
-
 class AllTermsQuery
-  IsMatchAtIndex: (index) -> true
+  search: (index) ->
+    b = new BitArray()
+    count = index.count()
+    b.set n, 1 for n in [0...count] if count
+    b
 
 class AlternatingQuery
-  IsMatchAtIndex: (index) -> index % 2
+  search: (index) ->
+    b = new BitArray()
+    count = index.count()
+    b.set n, n % 2 for n in [0...count] if count
+    b
 
 class MatchLessThanQuery
-  constructor: (value) -> @value = value
-  IsMatchAtIndex: (index) -> index < @value
-
-class RequiresIndexSearcherQuery
-  IsMatchAtIndex: (index,  @searcher) -> 
-    assert.instanceOf  @searcher, IndexSearcher
+  constructor: (@value) ->
     return
+  search: (index) ->
+    b = new BitArray()
+    count = index.count()
+    b.set n, n < @value for n in [0...count] if count
+    b
 
 describe 'IndexSearcher', ->
   describe 'Given *new IndexSearcher(EmptyIndex)*' , ->
     describe '*searchAllIndexes*', ->
       it 'yields an *empty* bit array' , (done)->
         searcher = new IndexSearcher EmptyIndex
-        searcher.searchAllIndexes AllTermsQuery, (err, hits)->
+        searcher.searchAllIndexes new AllTermsQuery, (err, hits)->
           assert.deepEqual hits, EmptyBitArray
           done()
-
   describe 'Given *new IndexSearcher(EightDocIndex)*' , ->
     before (done)->
       @searcher = new IndexSearcher EightDocIndex
       done()
     describe '*searchAllIndexes AllTermsQuery*', (done)->
       it 'yields *8 matches*' , (done)->
-        @searcher.searchAllIndexes new (AllTermsQuery), (err, hits)->
+        @searcher.searchAllIndexes new AllTermsQuery, (err, hits)->
           assert.deepEqual hits, EightMatchesBitArray
           done()
     describe '*searchAllIndexes MatchLessThanQuery 4*', ->
@@ -64,8 +67,4 @@ describe 'IndexSearcher', ->
       it 'yields *4 alternating matches*' , (done)->
         @searcher.searchAllIndexes new (AlternatingQuery), (err, hits)->
           assert.deepEqual hits, AlternatingBitArray
-          done()
-    describe '*searchAllIndexes RequiresIndexSearcherQuery*', ->
-      it '*passes*' , (done)->
-        @searcher.searchAllIndexes new (RequiresIndexSearcherQuery), (err, hits)->
           done()
