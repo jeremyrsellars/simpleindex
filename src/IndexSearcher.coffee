@@ -1,8 +1,7 @@
 BitArray = require 'bit-array'
 
 class module.exports.IndexSearcher
-  constructor: (index) ->
-    @index = index
+  constructor: (@index) ->
 
   searchAllIndexesSync: (query) ->
     query.search @index
