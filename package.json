@@ -1,0 +1,37 @@
+{
+  "name": "simpleindex",
+  "preferGlobal": "false",
+  "version": "0.1.0",
+  "author": "Jeremy R. Sellars <jeremyrsellars@gmail.com>",
+  "description": "A simple inverted index for javascript",
+  "contributors": [ 
+    {
+      "name": "Jeremy R. Sellars",
+      "email": "jeremyrsellars@gmail.com"
+    } 
+  ],
+  "main": "./simple-index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeremyrsellars/simpleindex.git"
+  },
+  "keywords": [
+    "inverted index",
+    "search"
+  ],
+  "dependencies" : {
+    "bit-array"   :  "*"
+  },
+  "noAnalyze": true,
+  "devDependencies": {
+    "coffee-script":  "1.2.0",
+    "mocha": "0.14.1",
+    "should" :  "0.6.0"
+  },
+  "bundleDependencies": [
+  ],
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.6"
+  }
+}
