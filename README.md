@@ -160,13 +160,14 @@ An IndexSearcher lets you query an index.  A query finds all the matches in an i
 and returns a BitArray representing the matching doctors.
 
 ```coffeescript
-breakfastButNotSaladQuery = new Query (index) ->
+lunchButNotSaladQuery = new Query (index) ->
   hits = new BitArray()
   hits.or index.getIndexesForTermSync 'tag:salad'
   hits.not()
-  hits.and index.getIndexesForTermSync 'tag:breakfast'
+  hits.and index.getIndexesForTermSync 'tag:lunch'
   return hits
 
-searcher = new IndexSearcher(@index)
-hits = searcher.search breakfastButNotSaladQuery
+searcher = new IndexSearcher index
+hits = searcher.search lunchButNotSaladQuery
+documents = index.getItemsSync hits
 ```

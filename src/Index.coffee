@@ -20,6 +20,14 @@ class Index
   count: ->
     @documents.length
 
+  getItemsSync: (indexes) =>
+    console.log 'indexes'
+    console.log indexes
+    items = []
+    indexes.forEach (value, index) =>
+      items.push(@getItemSync index) if value
+    return items
+
   getItemSync: (documentNumber) ->
     if documentNumber > @documents.length
       console.log documentNumber

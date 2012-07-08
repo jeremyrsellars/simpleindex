@@ -2,6 +2,7 @@ assert = require 'assert'
 require 'should'
 
 BitArray = require 'bit-array'
+EmptyBitArray = new BitArray()
 
 simpleindex = require './simple-index'
 Index = simpleindex.Index
@@ -41,6 +42,12 @@ describe 'Simple Index: Index', ->
       it 'getItem *synchronously* yields the item', ->
         assert.equal (@index.getItemSync (@idx)), brownSquirrelsTaste
 
+      it 'getItems(EmptyBitArray) *synchronously* yields an empty array', ->
+        assert.deepEqual (@index.getItemsSync new BitArray()), []
+
+      it 'getItems(new BitArray("1")) *synchronously* yields the item', ->
+        assert.deepEqual (@index.getItemsSync (new BitArray(Math.pow(2, @idx).toString()))), [brownSquirrelsTaste]
+
   describe 'An index with 1 document', -> 
     before (done) -> 
       @index = new Index
@@ -73,6 +80,9 @@ describe 'Simple Index: Index', ->
           @index.getItem @docNum, (err, index, @item) => done err
         it 'Item is the result', ->
           assert.deepEqual @item, quickBrownFox
+
+      it 'getItems(new BitArray("3")) *synchronously* yields the items', ->
+        assert.deepEqual (@index.getItemsSync (new BitArray("3"))), [brownSquirrelsTaste, quickBrownFox]
 
   describe 'when *no documents*.getTermsSync', -> 
     before (done) -> 
