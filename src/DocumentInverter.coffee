@@ -1,7 +1,7 @@
 
-DedupFilter = require('./DedupFilter.coffee').DedupFilter
-LowerCaseFilter = require('./LowerCaseFilter.coffee').LowerCaseFilter
-PrefixFilter = require('./PrefixFilter.coffee').PrefixFilter
+DedupFilter = require('./DedupFilter').DedupFilter
+LowerCaseFilter = require('./LowerCaseFilter').LowerCaseFilter
+PrefixFilter = require('./PrefixFilter').PrefixFilter
 
 fieldize = (fieldName, tokens) ->
   (new PrefixFilter(fieldName + ':')).filter tokens
