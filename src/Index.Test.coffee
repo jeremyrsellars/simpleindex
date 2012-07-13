@@ -266,3 +266,19 @@ describe 'Simple Index: Index', ->
       done()
     '*succeeds*' : (inverter) ->
       assert.instanceOf @inverter, DocumentInverter
+
+  describe 'when *one "a" document is added and 32 "b" documents are added*', -> 
+    before (done) -> 
+      @index = new Index()
+      @index.addSync 0, ['a']
+      for i in [1..32]
+        @index.addSync i, ['b']
+      @aDocs = @index.getIndexesForTermSync 'a'
+      @bDocs = @index.getIndexesForTermSync 'b'
+      done()
+    it 'termDocs lengths are the same for "a" and "b"', ->
+      console.log '@aDocs'
+      console.log @aDocs
+      console.log '@bDocs'
+      console.log @bDocs
+      @aDocs.values.length.should.equal @bDocs.values.length

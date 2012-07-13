@@ -9,14 +9,6 @@ class Index
     @documents = []
     @termDocs = []
 
-  addSync: (document, terms) ->
-    doc =
-      document: document
-      terms: terms
-      index: @currentDocNum
-    @documents[@currentDocNum] = doc
-    @currentDocNum++
-
   count: ->
     @documents.length
 
@@ -70,7 +62,12 @@ class Index
     while i < terms.length
       @insertTerm terms[i], @currentDocNum
       i++
+    @resizeAllTerms() if @currentDocNum % 32 == 0
     @currentDocNum++
+
+  resizeAllTerms: =>
+    tv.masks.set @currentDocNum, tv.masks.get @currentDocNum for tv in @termDocs
+    return
 
   getItem: (documentNumber, callback) =>
     process.nextTick =>
