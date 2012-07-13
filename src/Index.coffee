@@ -8,6 +8,7 @@ class Index
     @currentDocNum = 0
     @documents = []
     @termDocs = []
+    @emptyTermDocs = new BitArray()
 
   count: ->
     @documents.length
@@ -66,6 +67,7 @@ class Index
     @currentDocNum++
 
   resizeAllTerms: =>
+    @emptyTermDocs.set @currentDocNum, 0
     tv.masks.set @currentDocNum, tv.masks.get @currentDocNum for tv in @termDocs
     return
 
@@ -100,7 +102,7 @@ class Index
 
   getIndexesForTermSync: (term) =>
     termDocs = @getTermDocsForTermSync(term)
-    return new BitArray()  unless termDocs?
+    return @emptyTermDocs  unless termDocs?
     termDocs.masks
 
   getIndexesForTerm: (term, continuation) =>

@@ -198,7 +198,9 @@ describe 'Simple Index: Index', ->
       @masks = index.getIndexesForTermSync 'no'
       done()
     it 'there are *no matches*', ->
-      assert.deepEqual @masks, new BitArray(0)
+      correctlySizedBitArray = new BitArray 0
+      correctlySizedBitArray.set 1, 0
+      assert.deepEqual @masks, correctlySizedBitArray
 
   describe 'when *yes index*.getIndexesForTermSync (yes)', ->
     before (done) ->
@@ -277,8 +279,14 @@ describe 'Simple Index: Index', ->
       @bDocs = @index.getIndexesForTermSync 'b'
       done()
     it 'termDocs lengths are the same for "a" and "b"', ->
-      console.log '@aDocs'
-      console.log @aDocs
-      console.log '@bDocs'
-      console.log @bDocs
+      @aDocs.values.length.should.equal @bDocs.values.length
+
+  describe 'when *one "a" document is added and no "b" documents are added*', -> 
+    before (done) -> 
+      @index = new Index()
+      @index.addSync 0, ['a']
+      @aDocs = @index.getIndexesForTermSync 'a'
+      @bDocs = @index.getIndexesForTermSync 'b'
+      done()
+    it 'termDocs lengths are the same for "a" and "b"', ->
       @aDocs.values.length.should.equal @bDocs.values.length
