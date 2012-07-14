@@ -161,8 +161,8 @@ and returns a BitArray representing the matching doctors.
 
 ```coffeescript
 lunchButNotSaladQuery = new Query (index) ->
-  hits = new BitArray()
-  hits.or index.getIndexesForTermSync 'tag:salad'
+  hits = index.getIndexesForTermSync 'tag:salad'
+  hits = hits.copy()  # don't edit original
   hits.not()
   hits.and index.getIndexesForTermSync 'tag:lunch'
   return hits
