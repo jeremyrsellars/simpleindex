@@ -4,7 +4,6 @@ class StopWordFilter
       @stopWords = stopWords
     else
       @stopWords = []
-    return
 
   filter: (terms) ->
     terms = @subFilter.filter(terms) if @subFilter?
