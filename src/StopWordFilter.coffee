@@ -1,15 +1,14 @@
 class StopWordFilter 
-  constructor: (stopWords, subFilter) ->
+  constructor: (stopWords, @subFilter) ->
     if stopWords? && stopWords[0]?
-      this.stopWords = stopWords
+      @stopWords = stopWords
     else
-      this.stopWords = []
-    this.subFilter = subFilter
+      @stopWords = []
     return
 
   filter: (terms) ->
-    terms = this.subFilter.filter(terms) if this.subFilter?
-    return (term for term in terms when not (term in this.stopWords))
+    terms = @subFilter.filter(terms) if @subFilter?
+    return (term for term in terms when not (term in @stopWords))
 
 module.exports =
   StopWordFilter: StopWordFilter
