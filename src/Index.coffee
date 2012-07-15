@@ -14,8 +14,6 @@ class Index
     @documents.length
 
   getItemsSync: (indexes) =>
-    console.log 'indexes'
-    console.log indexes
     items = []
     indexes.forEach (value, index) =>
       items.push(@getItemSync index) if value
