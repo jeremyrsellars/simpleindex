@@ -50,17 +50,7 @@ class Index
 
 
   addSync: (document, terms) ->
-    doc =
-      document: document
-      terms: terms
-      index: @currentDocNum
-
-    @documents[@currentDocNum] = doc
-    i = 0
-
-    while i < terms.length
-      @insertTerm terms[i], @currentDocNum
-      i++
+    @replaceAtSync @currentDocNum, document, terms
     @resizeAllTerms() if @currentDocNum % 32 == 0
     @currentDocNum++
 

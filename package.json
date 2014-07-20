@@ -21,13 +21,16 @@
     "search"
   ],
   "dependencies" : {
-    "bit-array"   :  "*"
+    "bit-array"   :  "0.1.5"
+  },
+  "scripts" : {
+    "test" : "./node_modules/.bin/mocha --compilers coffee:coffee-script src/*Test.coffee"
   },
   "noAnalyze": true,
   "devDependencies": {
     "coffee-script":  "1.2.0",
-    "mocha": "0.14.1",
-    "should" :  "0.6.0"
+    "mocha": "1.20.1",
+    "should" :  "4.0.4"
   },
   "bundleDependencies": [
   ],
