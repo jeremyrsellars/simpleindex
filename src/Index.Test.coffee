@@ -290,3 +290,21 @@ describe 'Simple Index: Index', ->
       done()
     it 'termDocs lengths are the same for "a" and "b"', ->
       @aDocs.values.length.should.equal @bDocs.values.length
+
+  describe 'when *one "a" document is added and then replaced*', -> 
+    before (done) ->
+      @replacementDoc = text: "replacement" 
+      @index = new Index()
+      @index.addSync "a", ['a']
+      @index.replaceAtSync 0, @replacementDoc, ['b']
+      @aDocs = @index.getIndexesForTermSync 'a'
+      @bDocs = @index.getIndexesForTermSync 'b'
+      done()
+    it 'termDocs lengths are the same for "a" and "b"', ->
+      @aDocs.values.length.should.equal @bDocs.values.length
+    it 'termDocs are the same for "a" and "b"... e.g. the doc still matches "a"', ->
+      @aDocs.values.should.eql @bDocs.values
+    it 'documents contains the replacement doc instead', ->
+      @index.documents[0].document.should.equal @replacementDoc
+    it 'count() is correct', ->
+      @index.count().should.equal 1

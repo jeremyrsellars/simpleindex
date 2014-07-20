@@ -64,6 +64,15 @@ class Index
     @resizeAllTerms() if @currentDocNum % 32 == 0
     @currentDocNum++
 
+  replaceAtSync: (index, document, terms) ->
+    doc =
+      document: document
+      terms: terms
+      index: index
+
+    @documents[index] = doc
+    @insertTerm term, index for term in terms
+
   resizeAllTerms: =>
     @emptyTermDocs.set @currentDocNum, 0
     tv.masks.set @currentDocNum, tv.masks.get @currentDocNum for tv in @termDocs
